@@ -77,7 +77,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/13/software/">Introduction To Sofware Engineering</a>
+      <a class="article-title" href="/2019/12/13/software/">software</a>
     </h1>
   
 
@@ -85,30 +85,751 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Experiment-part"><a href="#Experiment-part" class="headerlink" title="Experiment part"></a>Experiment part</h2><h3 id="Experiment-1-遥控灯"><a href="#Experiment-1-遥控灯" class="headerlink" title="Experiment 1 遥控灯"></a>Experiment 1 遥控灯</h3><p>part 1 项目简介</p>
-<p>用arduino实现用遥控器对led灯的控制 摁一下亮灯 再摁一下熄灭。</p>
-<p>Part 2 Arduino代码</p>
-<p><img src="https://i.loli.net/2019/12/17/3NHZed9oPtDF8Bp.png" alt=""></p>
-<p>Part 3 实验展示（视频）</p>
-<iframe src="//player.bilibili.com/player.html?aid=79627701&cid=136279220&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+        <hr>
+<h2 id="软件工程导论作业"><a href="#软件工程导论作业" class="headerlink" title="软件工程导论作业"></a>软件工程导论作业</h2><h2 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a>实验部分</h2><h3 id="实验一-遥控灯"><a href="#实验一-遥控灯" class="headerlink" title="实验一 遥控灯"></a>实验一 遥控灯</h3><h4 id="一-项目简介"><a href="#一-项目简介" class="headerlink" title="一.项目简介"></a>一.项目简介</h4><p>用arduino实现用遥控器对led灯的控制 摁一下亮灯 再摁一下熄灭。</p>
+<h4 id="二-Arduino代码"><a href="#二-Arduino代码" class="headerlink" title="二.Arduino代码"></a>二.Arduino代码</h4><p><img src="https://i.loli.net/2019/12/17/3NHZed9oPtDF8Bp.png" alt=""></p>
+<p>#include &lt;boarddefs.h&gt;<br>#include &lt;IRremote.h&gt;<br>#include &lt;IRremoteInt.h&gt;<br>#include &lt;ir_Lego_PF_BitStreamEncoder.h&gt;<br>#include &lt;IRremote.h&gt;</p>
+<p>int RECV_PIN=10;<br>int ledPin=3;</p>
+<p>boolean ledState=LOW;<br>IRrecv irrecv(RECV_PIN);<br>decode_results results;</p>
+<p>void setup() {<br>  // put your setup code here, to run once:<br>  Serial.begin(9600);<br>  irrecv.enableIRIn();<br>  pinMode(ledPin,OUTPUT);<br>}</p>
+<p>void loop()<br>{<br>  // put your main code here, to run repeatedly:<br>  if(irrecv.decode(&amp;results))<br>  {<br>  Serial.println(results.value,HEX);<br>  if(results.value==0xFD00FF)<br>  {<br>  ledState=!ledState;<br>  digitalWrite(ledPin,ledState);<br>  }<br>  irrecv.resume();<br>  }<br>  else{}<br>}</p>
+<h4 id="三-实验展示（视频）"><a href="#三-实验展示（视频）" class="headerlink" title="三.实验展示（视频）"></a>三.实验展示（视频）</h4><iframe src="//player.bilibili.com/player.html?aid=79627701&cid=136279220&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<h3 id="Experiment-2-音乐编程"><a href="#Experiment-2-音乐编程" class="headerlink" title="Experiment 2 音乐编程"></a>Experiment 2 音乐编程</h3><p>part 1 项目简介</p>
-<p>用arduino实现播放歌曲</p>
-<p>Part 2 Arduino代码</p>
-<p><img src="https://i.loli.net/2019/12/18/RFe3nszOwa6LXhg.png" alt="屏幕截图_225_.png"><br><img src="https://i.loli.net/2019/12/18/xDvTJnSCmjG9atF.png" alt="屏幕截图_226_.png"><br><img src="https://i.loli.net/2019/12/18/lPCmL8TS1QJRNqE.png" alt="屏幕截图_227_.png"><br><img src="https://i.loli.net/2019/12/18/N2p4sMbnfOCZBge.png" alt="屏幕截图_228_.png"><br><img src="https://i.loli.net/2019/12/18/tSARs7Pm4vUohbD.png" alt="屏幕截图_229_.png"><br><img src="https://i.loli.net/2019/12/18/Vg4XZFhrsDu1vjl.png" alt="屏幕截图_230_.png"></p>
-<p>part 3 实验展示（视频）</p>
-<iframe src="//player.bilibili.com/player.html?aid=79776774&cid=136531364&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h3 id="实验二-音乐编程"><a href="#实验二-音乐编程" class="headerlink" title="实验二 音乐编程"></a>实验二 音乐编程</h3><h4 id="一-项目简介-1"><a href="#一-项目简介-1" class="headerlink" title="一.项目简介"></a>一.项目简介</h4><p>用arduino实现播放歌曲</p>
+<h4 id="二-Arduino代码-1"><a href="#二-Arduino代码-1" class="headerlink" title="二.Arduino代码"></a>二.Arduino代码</h4><p><img src="https://i.loli.net/2019/12/18/RFe3nszOwa6LXhg.png" alt="屏幕截图_225_.png"><br><img src="https://i.loli.net/2019/12/18/xDvTJnSCmjG9atF.png" alt="屏幕截图_226_.png"><br><img src="https://i.loli.net/2019/12/18/lPCmL8TS1QJRNqE.png" alt="屏幕截图_227_.png"><br><img src="https://i.loli.net/2019/12/18/N2p4sMbnfOCZBge.png" alt="屏幕截图_228_.png"><br><img src="https://i.loli.net/2019/12/18/tSARs7Pm4vUohbD.png" alt="屏幕截图_229_.png"><br><img src="https://i.loli.net/2019/12/18/Vg4XZFhrsDu1vjl.png" alt="屏幕截图_230_.png"></p>
+<p>#include &lt;string.h&gt;</p>
+<p>int Eulogyofjoytune[]=                 //根据简谱列出各频率<br>{<br>  350,350,393,441,<br>  441,393,350,330,<br>  294,294,330,350,<br>  350,330,330,<br>  350,350,393,441,<br>  441,393,350,330,<br>  294,294,330,350,<br>  330,294,294,<br>  330,330,350,294,<br>  330,350,393,350,294,<br>  330,350,393,350,330,<br>  294,330,221,-1,<br>  350,350,393,441,<br>  441,393,350,393,330,<br>  294,294,330,350,<br>  330,294,294<br>};<br>int lstune[]={<br>  262,262,393,393,<br>  441,441,393,<br>  350,350,330,330,<br>  294,294,262,<br>  393,393,350,350,<br>  330,330,294,<br>  393,393,350,350,<br>  330,330,294,<br>  262,262,393,393,<br>  441,441,393,<br>  350,350,330,330,<br>  294,294,262<br>};<br>int fstune[]=                 //根据简谱列出各频率<br>{<br>  882,441,556,556,//静止了<br>  556,556,495,441,495,//所有的花<br>  495,556,556,441,556,556,     //开 遥远了<br>  556,589,556,661,441, //清晰了爱<br>  441,441,589,589,  //天郁闷<br>  589,589,556,441,330, //爱却很喜    3434<br>  330,556,556,441,556,495,  //欢 那时候<br>  495,441,556,495,495,441,556,495, //我不懂 这叫爱<br>  495,441,556,556, //你喜欢<br>  556,556,495,441,495, //站在那窗<br>  495,661,661,556,441,556,556, //台 你好久      3434<br>  556,589,556,661,441,  //都没再来<br>  441,441,589,589,  //彩色的<br>  589,589,556,441,661, //时间染上<br>  661,556,882,882,742, //空白<br>  661,589,589,441,441,416,441,  //是你流的泪晕开<br>  441,441,495,556,661,661, //不要你离开<br>  661,556,495,441,495,556, //距离个不开<br>  556,441,495,556,833,882, //思念变成海<br>  882,882,833,742,661,742,742,//在窗外进不来<br>  742,661,441,495,556,661,661,//原谅说太快<br>  661,556,495,441,495,441,//爱成了阻碍<br>  441,441,495,556,661,//手中的风<br>  661,589,589,556,882,556,556,//筝放太快回不来</p>
+<p>};</p>
+<p>//节拍<br>float Eulogyofjoybeat[]=                   //根据简谱列出各节拍<br>{<br>  1,1,1,1,<br>  1,1,1,1,<br>  1,1,1,1,<br>  1+0.5,0.5,1+1,<br>  1,1,1,1,<br>  1,1,1,1,<br>  1,1,1,1,<br>  1+0.5,0.5,1+1,<br>  1,1,1,1,<br>  1,0.5,0.5,1,1,<br>  1,0.5,0.5,1,1,<br>  1,1,1,1,<br>  1,1,1,1,<br>  1,1,1,0.5,0.5,<br>  1,1,1,1,<br>  1+0.5,0.5,1+1,<br>};<br>float lsbeat[]={<br>  1,1,1,1,<br>  1,1,1+1,<br>  1,1,1,1,<br>  1,1,1+1,<br>  1,1,1,1,<br>  1,1,1+1,<br>  1,1,1,1,<br>  1,1,1+1,<br>  1,1,1,1,<br>  1,1,1+1,<br>  1,1,1,1,<br>  1,1,1+1<br>};<br>float fsbeat[]=                   //根据简谱列出各节拍<br>{<br>  3,0.25,0.5,0.25,//静止了<br>  2,0.5,0.5,0.5,0.5,//所有的花<br>  0.5,0.5,1,0.25,0.5,0.25,//开 遥远了<br>   2,0.5,0.5,0.75,0.25,//清晰了 爱<br>   2,0.25,0.5,0.25,//天郁闷<br>   2,0.5,0.5,0.5,0.5,//爱却很喜3434<br>   0.5,0.5,1,0.25,0.5,0.25,//欢 那时候<br>   1,0.25,0.5,0.25,1,0.25,0.5,0.25,//我不懂 这叫爱<br>   2,0.25,0.5,0.25, //你喜欢<br>   2,0.5,0.5,0.5,0.5,//站在那窗<br>   0.5,0.5,0.75,0.25,0.25,0.5,0.25,//台 你好久3434<br>   2,0.5,0.5,0.5,0.5,//都没再来<br>   2,0.25,0.5,0.25,//彩色的<br>   2,0.5,0.5,0.5,0.5,//时间染上<br>   1,1,1,0.75,0.25,//空白<br>   0.5,0.5,0.5,0.5,1,0.5,0.5,//是你流的泪云开<br>   2,0.5,0.5,0.5,0.25,0.25,//不要你离开<br>   2,0.5,0.5,0.5,0.25,0.25,//距离个不开<br>   2,0.5,0.5,0.5,0.25,0.25,//思念变成海<br>   1,1,0.5,0.5,0.5,0.25,0.25,//在窗外进不来<br>   0.25,0.75,0.5,0.5,0.5,0.25,0.25,//原谅说太快<br>   2,0.5,0.5,0.5,0.25,0.25,//爱成了阻碍<br>   2,0.5,0.5,0.5,0.5,//手中的风<br>   0.5,0.5,0.5,0.5,1,0.5,2,//筝放太快回不来<br>   };</p>
+<p>//设置接口<br>int buzzerpin=4;<br>int ledpin=13;</p>
+<p>void setup() {<br>  pinMode(buzzerpin,OUTPUT);<br>  pinMode(ledpin,OUTPUT);<br>  Serial.begin(9600);<br>}<br>//播放歌曲的函数<br>void start(int len,int buzzpin,int lepin,int <em>tune,float *beat){<br>  for(int x=0;x&lt;len;x++)<br>  {<br>    tone(buzzpin,tune[x]);<br>    digitalWrite(lepin, HIGH);<br>    delay(800</em>beat[x]);//与前一代码不同之处，这里将原来的500分为了400和100，分别控制led的开与关，对于蜂鸣器来说依然是500.<br>    digitalWrite(lepin, LOW);<br>    noTone(buzzpin);<br>    delay(10);<br>  }<br>}</p>
+<p>void loop() {<br>  char select[20] = {0};<br>  char* p = select;<br>  while(Serial.available()&gt;0){<br>    *p++ = char(Serial.read());<br>    delay(2);<br>  }<br>  if(select[0]){<br>    int len;<br>    if(strcmp(select,”Ode to Jo”) == 13){<br>      Serial.println(“Next, we will play the Ode to Jo”);<br>      len=sizeof(Eulogyofjoytune)/sizeof(Eulogyofjoytune[0]);<br>      start(len,buzzerpin,ledpin,Eulogyofjoytune,Eulogyofjoybeat);<br>    }<br>    else if(strcmp(select,”f”) == 13){<br>      Serial.println(“Next, we will play the flower sea”);<br>      len=sizeof(fstune)/sizeof(fstune[0]);<br>      start(len,buzzerpin,ledpin,fstune,fsbeat);<br>    }else<br>    {<br>      Serial.println(“我妈死了”);<br>    }<br>  }<br>  delay(1000);<br>}</p>
+<h4 id="三-实验展示（视频）-1"><a href="#三-实验展示（视频）-1" class="headerlink" title="三.实验展示（视频）"></a>三.实验展示（视频）</h4><iframe src="//player.bilibili.com/player.html?aid=79776774&cid=136531364&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<h3 id="Experiment-3-温湿度监测器"><a href="#Experiment-3-温湿度监测器" class="headerlink" title="Experiment 3 温湿度监测器"></a>Experiment 3 温湿度监测器</h3><p>part 1 项目简介</p>
-<p>用arduino实现一个可以对周围环境实时监控的湿温度监测器</p>
-<p>part 2 arduino代码</p>
-<p><img src="https://i.loli.net/2019/12/18/KCn8wEWtJrNhUH9.png" alt="屏幕截图_223_.png"><br><img src="https://i.loli.net/2019/12/18/g9TWd1oKfZ54DVw.png" alt="屏幕截图_224_.png"></p>
-<p>part 3 实验展示（照片&amp;视频）</p>
+<h3 id="实验三-温湿度监测器"><a href="#实验三-温湿度监测器" class="headerlink" title="实验三 温湿度监测器"></a>实验三 温湿度监测器</h3><h4 id="一-项目简介-2"><a href="#一-项目简介-2" class="headerlink" title="一.项目简介"></a>一.项目简介</h4><p>用arduino实现一个可以对周围环境实时监控的湿温度监测器</p>
+<h4 id="二-Arduino代码-2"><a href="#二-Arduino代码-2" class="headerlink" title="二.Arduino代码"></a>二.Arduino代码</h4><p><img src="https://i.loli.net/2019/12/18/KCn8wEWtJrNhUH9.png" alt="屏幕截图_223_.png"><br><img src="https://i.loli.net/2019/12/18/g9TWd1oKfZ54DVw.png" alt="屏幕截图_224_.png"></p>
+<p>#include &lt;Wire.h&gt;<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>#include &lt;dht11.h&gt;<br>LiquidCrystal_I2C lcd(0x20,16,2);//设置LCD的地址，2行，每行16字符<br>dht11 DHT;<br>#define DHT11_PIN 4</p>
+<p>void setup() {<br>                                              // put your setup code here, to run once:<br>  lcd.init();                                 // LCD初始化设置<br>  lcd.backlight();                            // 打开 LCD背光<br>  Serial.begin(9600);                                  // 设置串口波特率9600<br>                                              //串口输出”Type, status, Humidity(%), Temperature(C)”<br>  Serial.print(“Type, status, Humidity(%), Temperature(C)”);<br>  lcd.print(“Humidity(%):  “);                                        //LCD屏显示” Humidity(%):”<br>  lcd.setCursor(2,1);                                        //光标移到第2行，第一个字符<br>  lcd.print(“Temp(c): “);                                        //LCD屏显示”Temp(C):”<br>}</p>
+<p>void loop() {<br>                                              // put your main code here, to run repeatedly:<br>  int chk;                                    //chk用于存储DHT11传感器的数据<br>  Serial.print(“DHT11, \t”);<br>                                              //读取 DHT11传感器的数据<br>  chk = DHT.read(DHT11_PIN);<br>  switch (chk){<br>    case DHTLIB_OK:<br>        Serial.print(“NO.1”);<br>         break;<br>    case DHTLIB_ERROR_CHECKSUM:<br>        Serial.print(“No.2”);<br>        break;<br>    case DHTLIB_ERROR_TIMEOUT:<br>           Serial.print(“No.3”);<br>           break;<br>    default:<br>            Serial.print(“No.4”);<br>            break;<br>  }<br>                                                //串口显示温湿度值<br>  Serial.print(DHT.humidity,1);<br>  Serial.print(“,\t”);<br>  Serial.print(“DHT.temperature,1 \n”); </p>
+<p>  lcd.setCursor(12,0);<br>  lcd.print(DHT.humidity);<br>  lcd.setCursor(9,1);<br>  lcd.print(DHT.temperature);<br>  //LCD显示温湿度值<br>  delay(1000);<br>}</p>
+<p>三.实验展示（照片&amp;视频）</p>
 <p><img src="https://i.loli.net/2019/12/18/9T5tmVZfEAcl4DU.jpg" alt="qq_pic_merged_1576670742545.jpg"></p>
-<h3 id="Experiment-4-多功能时钟"><a href="#Experiment-4-多功能时钟" class="headerlink" title="Experiment 4 多功能时钟"></a>Experiment 4 多功能时钟</h3><p>part 1 项目简介</p>
-<p>part 2 arduino代码</p>
-<p>part 3 实验展示（视频&amp;&amp;照片）</p>
+<h3 id="实验四-多功能时钟"><a href="#实验四-多功能时钟" class="headerlink" title="实验四 多功能时钟"></a>实验四 多功能时钟</h3><h4 id="一-项目简介-3"><a href="#一-项目简介-3" class="headerlink" title="一.项目简介"></a>一.项目简介</h4><p>初始化的时候是时间流动模式，会显示一个初始化的日期。</p>
+<p>摁下1键进入修改时间模式，可以控制光标的左移和右移，数字的增加和减少，摁下确认键回到时间流动的模式，会自动校准星期并显示。</p>
+<p>摁下2键进入设置闹钟模式，可以控制光标左移或者右移，摁下确认件回到时间流动模式，当到达设定的时间时闹钟会响。</p>
+<h4 id="二-Arduino代码-3"><a href="#二-Arduino代码-3" class="headerlink" title="二.Arduino代码"></a>二.Arduino代码</h4><p>#include &lt;IRremote.h&gt;<br>#include &lt;math.h&gt;<br>#include &lt;LiquidCrystal_I2C.h&gt;<br>LiquidCrystal_I2C lcd(0x20, 16, 2);</p>
+<p>int RECV_PIN = 10;                                               //定义红外接收的数字引脚口为10号口<br>int ALARM_PIN = 4;                                               //定义蜂鸣器的接口为4<br>IRrecv irrecv(RECV_PIN);<br>decode_results results;                                          //定义红外接收装置的接收结果变量</p>
+<p>int pos[] = {3, 4, 5, 6, 8, 9, 11, 12,<br>             13, 14, 16, 17, 19, 20<br>            };</p>
+<p>int posi[]={13,14,16,17,19,20};</p>
+<p>int modifyIndex;</p>
+<p>boolean light_flag;                                              //定义lcd屏亮暗标志，true表示亮屏，false表示暗屏<br>boolean modify_flag;                                             //定义修改时间模式标志位，true表示修改时间模式，false表示非修改时间模式<br>boolean alarm_flag;                                              //定义设置闹铃模式标志位，true表示设置闹钟模式，false表示非设置闹钟模式<br>boolean buzzer_flag;                                             //定义蜂鸣器，true响，false不响</p>
+<p>//定义全局时间变量–年 月 日 时 分 秒<br>int Y1, Y2, Y3, Y4;                                              //定义年份的四位，从高到低<br>int M1, M2;                                                      //定义月份的两位，从高到低<br>int D1, D2;                                                      //定义日期的两位，从高到低<br>int H1, H2;                                                      //定义小时的两位，从高到低<br>int MI1, MI2;                                                    //定义分钟的两位，从高到低<br>int S1, S2;                                                      //定义秒数的两位，从高到低<br>int Date;                                                        //定义星期</p>
+<p>//定义全局闹铃时间变量–月 日 时 分<br>int Alarm_M1, Alarm_M2;                                                      //定义月份的两位，从高到低<br>int Alarm_D1, Alarm_D2;                                                      //定义日期的两位，从高到低<br>int Alarm_H1, Alarm_H2;                                                      //定义小时的两位，从高到低<br>int Alarm_MI1, Alarm_MI2;                                                    //定义分钟的两位，从高到低<br>int Alarm_S1, Alarm_S2;                                                      //定义秒数的两位，从高到低</p>
+<p>//定义每个月的天数<br>int dayOfMonth[13][2] = {<br>  0, 0,<br>  31, 31,<br>  28, 29,<br>  31, 31,<br>  30, 30,<br>  31, 31,<br>  30, 30,<br>  31, 31,<br>  31, 31,<br>  30, 30,<br>  31, 31,<br>  30, 30,<br>  31, 31,<br>};</p>
+<p>int x, y;                                                       //定义修改液晶屏的时间数位的横纵坐标</p>
+<p>//功能函数定义</p>
+<p>void setAlarm();                                                //定义设置闹钟的函数<br>void tita();                                                    //定义时间流动函数<br>void date();                                                    //定义日期的流动函数<br>void calendarInit();                                            //定义万年历初始化函数<br>void calendarShow();                                            //定义万年历的显示函数<br>void xblink();                                                  //定义某一块闪烁的函数<br>void xNoblink();                                                //定义某一块不闪烁的函数<br>void addtime();<br>void detime();<br>void addtime1();<br>void detime1();<br>int identify(int x1,int x2,int x3,int x4,int x5,int x6,int x7,int x8);<br>void AlarmInit();<br>int ISYEARP(int x);     </p>
+<p>//初始化函数<br>void setup() {<br>  // put your setup code here, to run once:<br>  modifyIndex = 0;<br>  x = 3;<br>  y = 0;<br>  light_flag = true;             //定义lcd屏亮暗标志，true表示亮屏，false表示暗屏<br>  modify_flag = false;           //定义修改时间模式标志位，true表示修改时间模式，false表示非修改时间模式<br>  alarm_flag = false;            //定义设置闹铃模式标志位，true表示设置闹钟模式，false表示非设置闹钟模式<br>  buzzer_flag = false;<br>  Serial.begin(9600);<br>  irrecv.enableIRIn();<br>  pinMode(ALARM_PIN, OUTPUT);<br>  lcd.init();<br>  lcd.backlight();<br>  calendarInit(); //初始化时间<br>  calendarShow();<br>}<br>//<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>88<br>void loop()<br>{<br>  if (irrecv.decode(&amp;results))                             //  *  如 果 接 收 到 了 信 号<br>  {<br>    Serial.println(results.value, HEX);</p>
+<pre><code>if (results.value == 0xFD08F7)                         //  **   如 果 摁 下 了 1 键
+{
+  modifyIndex = 0;
+  modify_flag = true;
+  alarm_flag = false;
+  light_flag = false;
+  xblink();
+  Serial.print(&quot;接收到1信号，进入修改时间模式 &quot;);
+}
 
+else if (results.value == 0xFD8877 )                         //  **   如 果 摁 下 了 2 键
+{
+  modifyIndex = 0;
+  alarm_flag = true;
+  light_flag = true;
+  modify_flag = false;
+  xblink();
+  Serial.print(&quot;接收到2信号，进入设置闹钟模式 &quot;);
+  setAlarm();
+  AlarmInit();
+}
+
+else if (results.value == 0xFD20DF)                    //  **  如 果 摁 下 光 标 左 移
+{
+  if (modify_flag == true &amp;&amp; alarm_flag == false)
+  {
+    modifyIndex = (modifyIndex + 13) % 14;
+    x = pos[modifyIndex];
+    if (x &gt; 12)
+    {
+      x = x - 12;
+      y = 1;
+    }
+    else if(x&lt;=12)
+    {
+      x=x;
+      y = 0;
+    }
+    xblink();
+  }
+  else if ( modify_flag == false &amp;&amp; alarm_flag == true )
+  {
+    modifyIndex = (modifyIndex + 5) % 6;
+    x = posi[modifyIndex]-12;
+    y=1;
+    xblink();
+  }
+}
+
+else if (results.value == 0xFD609F)                 // **  如 果 摁 下 光 标 右 移
+{
+  if (modify_flag == true &amp;&amp; alarm_flag == false)
+  {
+    modifyIndex = (modifyIndex + 15) % 14;
+    x = pos[modifyIndex];
+    if (x &gt; 12)
+    {
+      x = x - 12;
+      y = 1;
+    }
+    else if(x&lt;=12)
+    {
+      x=x;
+      y = 0;
+    }
+    xblink();
+  }
+  else if ( modify_flag == false &amp;&amp; alarm_flag == true )
+  {
+    modifyIndex = (modifyIndex + 7) % 6;
+    x = posi[modifyIndex];
+    x=x-12;
+    y=1;
+    xblink();
+  }
+}
+
+else if (results.value == 0xFD807F)                    //**  如 果 摁 下 了 VOL++  键
+{
+
+  if (modify_flag == true  )
+  {
+    addtime();
+  }     
+  else if ( alarm_flag == true )
+  {
+    addtime1();
+  }
+}
+
+else if (results.value == 0xFD906F)                    //**  如 果 摁 下 了 VOL--  键
+{
+  if (modify_flag == true)
+  {
+    detime();
+  }
+  else if ( alarm_flag == true)
+  {
+    detime1();
+  }
+}
+
+else if (results.value == 0xFDA05F )//****************************************接收到确认信号，进入时间流动模式
+{
+  Serial.print(&quot;接收到确认信号，进入时间流动模式 &quot;);
+  modify_flag = false;
+  alarm_flag = false;
+  light_flag = true;
+  xNoblink();
+}
+irrecv.resume();</code></pre><p>  }// *  如 果 接 收 到 了 信 号 * //</p>
+<p>  if (modify_flag == false &amp;&amp; alarm_flag == false &amp;&amp; light_flag == true)                    // * 如 果 modify_flag  的 模 式 是 false , alarm_flag 的 模 式 是 false , light_flag 的模 式 是 true. 则 进 入 时 间 流 动 模 式<br>  {<br>    calendarShow();<br>    delay(1000);<br>    tita();<br>  }<br>}                                    // loop 函 数 结 尾</p>
+<p>// <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>函数库<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>//<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>//<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>//万年历初始化函数，加串口通信读取电脑当前时间<br>void calendarInit()<br>{<br>  Y1 = 2, Y2 = 0, Y3 = 1, Y4 = 9;                                 //年份初始化<br>  M1 = 0, M2 = 1;                                                 //月份初始化<br>  D1 = 0, D2 = 1;                                                 //日期初始化<br>  H1 = 0, H2 = 0;                                                 //小时初始化<br>  MI1 = 0, MI2 = 0;                                               //分钟初始化<br>  S1 = 0, S2 = 0;                                                 //秒数初始化<br>}</p>
+<p>//万年历显示函数<br>void calendarShow()<br>{<br>  lcd.setCursor(3, 0);<br>  lcd.print(Y1);<br>  lcd.print(Y2);<br>  lcd.print(Y3);<br>  lcd.print(Y4);<br>  lcd.print(“/“);<br>  lcd.print(M1);<br>  lcd.print(M2);<br>  lcd.print(“/“);<br>  lcd.print(D1);<br>  lcd.print(D2);<br>  //lcd.print(“日”);<br>  lcd.setCursor(1, 1);<br>  lcd.print(H1);<br>  lcd.print(H2);<br>  lcd.print(“:”);<br>  lcd.print(MI1);<br>  lcd.print(MI2);<br>  lcd.print(“:”);<br>  lcd.print(S1);<br>  lcd.print(S2);<br>  Date=identify(Y1,Y2,Y3,Y4,M1,M2,D1,D2);<br>  lcd.setCursor(10, 1);<br>  switch (Date) {<br>    case 2: lcd.print(“Mon”); break;<br>    case 3: lcd.print(“Tue”); break;<br>    case 4: lcd.print(“Wes”); break;<br>    case 5: lcd.print(“Thu”); break;<br>    case 6: lcd.print(“Fri”); break;<br>    case 0: lcd.print(“Sat”); break;<br>    case 1: lcd.print(“Sun”); break;<br>    default: lcd.print(“Error!”); break;<br>}<br>}</p>
+<p>//时间流动函数<br>void tita(){<br>  S2 = S2 + 1;       // S1高秒 S2低秒<br>  if (S2 == 10)<br>  {<br>    S2 = 0;<br>    S1 = S1 + 1;<br>    if (S1 == 6)<br>    {<br>      S1 = 0;<br>      MI2 = MI2 + 1;    // MI1 高分；MI2 低分；<br>      if (MI2 == 10)<br>      {<br>        MI2 = 0;<br>        MI1 = MI1 + 1;<br>        if (MI1 == 6)<br>        {<br>          MI1 = 0;<br>          H2 = H2 + 1;          // H1 小时高 H2 小时低<br>          if (H1 == 2 &amp;&amp; H2 == 4)<br>          {<br>            H1 = 0;<br>            H2 = 0;<br>            date();<br>          }<br>          if (H2 == 10)<br>          {<br>            H2 = 0;<br>            H1 = H1 + 1;</p>
+<pre><code>      }
+    }
+  }
+}</code></pre><p>  }<br>  int i;<br>  if (Alarm_S1 == S1 &amp;&amp; Alarm_S2 == S2 &amp;&amp; Alarm_MI2 == MI2 &amp;&amp; Alarm_MI1 == MI1 &amp;&amp; Alarm_H2 == H2 &amp;&amp; Alarm_H1 == H1  )<br>  {<br>    //响闹铃<br>    Serial.print(Alarm_H1);<br>    Serial.print(Alarm_H2);<br>    Serial.print(“:”);<br>    Serial.print(Alarm_MI1);<br>    Serial.print(Alarm_MI2);<br>    Serial.print(“:”);<br>    Serial.print(Alarm_S1);<br>    Serial.print(Alarm_S2);<br>    buzzer_flag = true;  //启动蜂鸣器</p>
+<pre><code>if (buzzer_flag == true)
+  for (i = 0; i &lt; 10; i++)
+  {
+    digitalWrite(ALARM_PIN, HIGH);
+    delay(1000);
+    digitalWrite(ALARM_PIN, LOW);
+    delay(1000);
+  }</code></pre><p>  }<br>}</p>
+<p>//日期流动函数<br>void date() {<br>  Date = (Date + 1 ) % 7;<br>  D2 = D2 + 1;<br>  if ( D2 + D1 * 10 &gt; (dayOfMonth[M1 * 10 + M2][ISYEARP(Y1 * 1000 + Y2 * 100 + Y3 * 10 + Y4)]))         // * 如果现在的年份对应的月份对应的日期超过了它应该有的日期<br>  {<br>    D1 = 0;<br>    D2 = 1;<br>    M2 = M2 + 1;<br>    if (M1 == 1 &amp;&amp; M2 == 3)                                   // ** 如果改变后月份变成了 13 月<br>    {<br>      M1 = 0;<br>      M2 = 1;<br>      Y4 = Y4 + 1;<br>      if (Y4 == 10)                                         // <strong>* 如果改变后月份变成了 13 月 且年份的第四位为 10<br>      {<br>        Y4 = 0;<br>        Y3 = Y3 + 1;<br>        if (Y3 == 10)                                       // **</strong> 如果改变后月份变成了 13 月 且年份的第四位为 10 且 第三位也为 10<br>        {<br>          Y3 = 0;<br>          Y2 = Y2 + 1;<br>          if (Y2 == 10)                                     // <strong><strong>* 如果改变后月份变成了 13 月 且 年份的第四位为 10 且 第三位也为 10 且第二位也为 10<br>          {<br>            Y2 = 0;<br>            Y1 = Y1 + 1;<br>            if (Y1 == 10)                                   // **</strong></strong> 如果改变后月份变成了 13 月 且 年份的第四位为 10 且 第三位也为 10 且第二位也为 10 且第一位也为 10<br>            {<br>              Y1 = 0;<br>            }<br>          }<br>        }<br>      }<br>    }<br>    if (M2 == 10)                                           // ** 如果改变后的月份第二位为 10<br>    {<br>      M2 = 0;<br>      M1 = M1 + 1;<br>    }<br>  }<br>  if (D2 == 10) {                                            // * 如果日期的第二位为 10<br>    D2 = 0;<br>    D1 = D1 + 1;<br>  }<br>}</p>
+<p>void xblink() {<br>  lcd.setCursor(x, y);<br>  lcd.blink();<br>}</p>
+<p>void xNoblink() {<br>  lcd.noBlink();<br>}</p>
+<p>void addtime()   //<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>设置时间的增加函数<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>{<br>  if (y == 0)<br>  {<br>    if(x==3)<br>    {<br>      if(Y1==9)<br>      {<br>        Y1=0;<br>      }<br>      else if(Y1!=9)<br>      {<br>        Y1++;<br>      }<br>     lcd.print(Y1);<br>     lcd.setCursor(3,0);<br>    }</p>
+<pre><code>else if(x==4)
+{
+  if(Y2==9)
+  {
+    Y2=0;
+  }
+  else if(Y2!=9)
+  {
+    Y2++;
+  }
+  lcd.print(Y2);
+  lcd.setCursor(4,0);
+}
+
+else if(x==5)
+{
+  if(Y3==9)
+  {
+    Y3=0;
+  }
+  else if(Y3!=9)
+  {
+    Y3++;
+  }
+  lcd.print(Y3);
+  lcd.setCursor(5,0);
+}
+
+else if(x==6)
+{
+  if(Y4==9)
+  {
+    Y4=0;
+  }
+  else if(Y4!=9)
+  {
+    Y4++;
+  }
+  lcd.print(Y4);
+  lcd.setCursor(6,0);
+}
+
+else if (x==8)   //*****************************************************************************************************************************************设置时间增加函数的M1
+{
+  if(M2==0)
+  {
+    if(M1==1)
+    {
+      M1=1;
+    }
+    else if(M1==0)
+    {
+      M1=1;
+    }
+  }
+  else if(M2==1 || M2==2)
+  {
+    M1=(M1+3)%2;
+  }
+  else if( M2==3 || M2==4 || M2==5 || M2==6 || M2==7 || M2==8 || M2==9 )
+  {
+    M1=0;
+  }
+  lcd.print(M1);
+  lcd.setCursor(8,0);
+}
+
+else if (x==9)  //************************************************************************************************************************************************设置时间增加函数的M2
+{
+  if (M1==1)
+  {
+    M2 = ( M2 +4 ) % 3;
+  }
+  else if(M1==0)
+  {
+    if(M2==9)
+    {
+      M2=1;
+    }
+    else if(M2!=9)
+    {
+      M2++;
+    }
+  }
+  lcd.print(M2);
+  lcd.setCursor(9,0);
+}
+
+else if(x==11)                  //*********************************************************************************************************************************设置时间增加函数的 D1
+{
+  if(D2==0)
+  {
+    if(  D1==(dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10  )
+    {
+      D1=1;
+    }
+    else if(  D1!= ( dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] ))
+    {
+      D1++;
+    }      
+  }
+  else if(D2!=0)
+  {
+    if(  ((D1+1)*10+D2)  &gt;  (dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] ) )
+    {
+      D1=0;
+    }
+    else if( ((D1+1)*10+D2)  &lt;=  (dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] ))
+    {
+      D1++;
+    }
+  }
+  lcd.print(D1);
+  lcd.setCursor(11,0);
+}
+
+else if(x==12)                //************************************************************************************************************************************设置时间增加函数的D2  
+{
+  if( (D1&lt;  ((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)])/10)  )&amp;&amp;  (D1!=0))
+  {
+   if(D2==9)
+    {
+      D2=0;
+    }
+    else if(D2!=9)
+    {
+      D2++;
+    }
+  }
+  else if(D1==( ( dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)]) /10 ) )
+  {
+    if(D2== ( dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)])%10     )
+    {
+      D2=0;
+    }
+    else if(D2&lt;( dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)])%10 )
+    {
+      D2++;
+    }
+  }
+  else if(D1==0)
+  {
+    if(D2==9)
+    {
+      D2=1;
+    }
+    else if(0&lt;D2&lt;9)
+    {
+      D2++;
+    }
+  }
+  lcd.print(D2);
+  lcd.setCursor(12,0);
+}</code></pre><p>  }<br>  else if(y==1)<br>  {<br>    if(x==1)<br>    {<br>      H1=(H1+4)%3;<br>      lcd.print(H1);<br>      lcd.setCursor(1,1);<br>    }</p>
+<pre><code>else if(x==2)
+{
+  H2=(H2+11)%10;
+  if(H1*10+H2&gt;24)
+  {
+    H2=0;
+  }
+  lcd.print(H2);
+  lcd.setCursor(2,1);
+}
+
+else if(x==4)
+{
+  MI1=(MI1+7)%6;
+  lcd.print(MI1);
+  lcd.setCursor(4,1);
+}
+else if(x==5)
+{
+  MI2=(MI2+11)%10;
+  lcd.print(MI2);
+  lcd.setCursor(5,1);
+}
+else if(x==7)
+{
+  S1=(S1+7)%6;
+  lcd.print(S1);
+  lcd.setCursor(7,1);
+}
+else if(x==8)
+{
+  S2=(S2+11)%10;
+  lcd.print(S2);
+  lcd.setCursor(8,1);
+}</code></pre><p>  }<br>}</p>
+<p>void detime()   //<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>设置时间的减少函数<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>{<br>  if (y == 0)<br>  {<br>    if ( x == 3 )<br>    {<br>      if(Y1==0)<br>      {<br>        Y1=9;<br>      }<br>      else<br>      {<br>        Y1=Y1-1;<br>      }<br>      lcd.print(Y1);<br>      lcd.setCursor(3,0);<br>    }</p>
+<pre><code>else if ( x == 4 )
+{
+  if(Y2==0)
+  {
+    Y2=9;
+  }
+  else
+  {
+    Y2=Y2-1;
+  }
+  lcd.print(Y2);
+  lcd.setCursor(4,0);
+}
+
+ else if ( x == 5 )
+{
+  if(Y3==0)
+  {
+    Y3=9;
+  }
+  else
+  {
+     Y3=Y3-1;
+  }
+  lcd.print(Y3);
+  lcd.setCursor(5,0);
+}
+
+ else if ( x == 6 )
+{
+  if(Y4==0)
+  {
+    Y4=9;
+  }
+  else
+  {
+    Y4=Y4-1;
+  }
+  lcd.print(Y4);
+  lcd.setCursor(6,0);
+}
+
+else if (x==8)  //*******************************************************************************************************************************8**********设置时间减少的   M1
+{
+  if(M2==0)
+  {
+    M1=1;
+  }
+  else if(M2==1||M2==2)
+  {
+    M1=(M1+3)%2;
+  }
+  else if(M2==3||M2==4||M2==5||M2==6||M2==7||M2==8||M2==9)
+  {
+    M1=0;
+  }
+  lcd.print(M1);
+  lcd.setCursor(8,0);
+}
+
+else if (x==9)            //********************************************************************************************************************************设置时间减少的   M2
+{
+  if(M1==0)
+  {
+    if(M2==1)
+    {
+      M2=9;
+    }
+    else if(M2!=1)
+    {
+      M2--;
+    }
+  }
+  else if(M1==1)
+  {
+    if(M2==0)
+    {
+      M2=2;
+    }
+    else if(M2!=0)
+    {
+      M2--;
+    }
+  }
+  lcd.print(M2);
+  lcd.setCursor(9,0);
+}
+
+else if(x==11)                       //***********************************************************************************************************设置时间减少的D1
+{
+  if(D2==0)
+  {
+    if(  D1==1  )
+    {
+      D1=(dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10;
+    }
+    else if(  D1!=1 )
+    {
+      D1--;
+    }      
+  }
+
+  else if( D2!=0 &amp;&amp; D2  !=  (dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )%10  )
+  {
+    if(D1!=0)
+    {
+      D1--;
+    }
+    else if(D1==0)
+    {
+      if(    ((((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10)*10) +D2) &gt; (dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )    )
+      {
+        D1=((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10)-1;
+      }
+      else if((((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10) +D2) &lt;= (dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] ))
+      {
+        D1=((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10);
+      }
+    }
+  }
+
+   else if( D2!=0 &amp;&amp; D2  ==  (dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )%10  )
+   {
+    if(D1!=0)
+    {
+      D1--;
+    }
+    else if(D1==0)
+    {
+      D1=((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)  ] )/10);
+    }
+   }
+
+  lcd.print(D1);
+  lcd.setCursor(11,0);
+}
+
+else if(x==12)  //************************************************************************************************************************************设置时间减少的D2
+{
+  if(D1!=0)
+  {
+    if(D1==((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)]) /10))
+    {
+      if(D2==0)
+      {
+        D2=(dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)])%10;
+      }
+      else if(D2!=0)
+      {
+        D2--;
+      }
+    }
+    else if(D1!=((dayOfMonth[ M1 * 10 + M2 ][ ISYEARP(Y1*1000+Y2*100+Y3*10+Y4)]) /10))
+    {
+      if(D2==0)
+      {
+        D2=9;
+      }
+      else if(D2!=0)
+      {
+        D2--;
+      }
+    }
+  }
+  else if(D1==0)
+  {
+      if(D2==1)
+      {
+        D2=9;
+      }
+      else if(D2!=1)
+      {
+        D2--;
+      }
+  }
+  lcd.print(D2);
+  lcd.setCursor(12,0);
+}</code></pre><p>  }</p>
+<p>  else if(y==1)<br>  {<br>    if(x==1)<br>    {<br>      if(H1==0)<br>      {<br>        H1=2;<br>      }<br>      else if(H1!=0)<br>      {<br>            H1–;<br>      }<br>      lcd.print(H1);<br>      lcd.setCursor(1,1);<br>    }</p>
+<pre><code>else if(x==2)
+{
+  if(H2==0)
+  {
+    if(H1==0||H1==1)
+    {
+      H2=9;
+    }
+    else if(H1 == 2)
+    {
+      H2=3;
+    }
+  }
+  else if(H2!=0)
+  {
+          H2--;
+  }
+  lcd.print(H2);
+  lcd.setCursor(2,1);
+}
+
+else if(x==4)
+{
+  if(MI1==0)
+  {
+    MI1=5;
+  }
+  else if(MI1!=0)
+  {
+    MI1--;
+  }
+  lcd.print(MI1);
+  lcd.setCursor(4,1);
+}
+
+else if(x==5)
+{
+  if(MI2==0)
+  {
+    MI2=9;
+  }
+  else if(MI2!=0)
+  {
+     MI2--;
+  }
+  lcd.print(MI2);
+  lcd.setCursor(5,1);
+}
+
+else if(x==7)
+{
+  if(S1==0)
+  {
+    S1=5;
+  }
+  else if(S1!=0)
+  {
+    S1--;
+  }
+  lcd.print(S1);
+  lcd.setCursor(7,1);
+}
+
+else if(x==8)
+{
+  if(S2==0)
+  {
+    S2=9;
+  }
+  else if(S2!=0)
+  {
+    S2--;
+  }
+  lcd.print(S2);
+  lcd.setCursor(8,1);
+}</code></pre><p>  }<br>}</p>
+<p>void addtime1()   //<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>设置闹钟的增加时间函数<strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong><br>{<br>  if(y==1)<br>  {<br>    if(x==1)<br>    {<br>      Alarm_H1=(Alarm_H1+4)%3;<br>      lcd.print(Alarm_H1);<br>      lcd.setCursor(1,1);<br>    }</p>
+<pre><code>else if(x==2)
+{
+  Alarm_H2=(Alarm_H2+11)%10;
+  if(Alarm_H1*10+Alarm_H2&gt;24)
+  {
+    Alarm_H2=0;
+  }
+  lcd.print(Alarm_H2);
+  lcd.setCursor(2,1);
+}
+
+else if(x==4)
+{
+  Alarm_MI1=(Alarm_MI1+7)%6;
+  lcd.print(Alarm_MI1);
+  lcd.setCursor(4,1);
+}
+else if(x==5)
+{
+  Alarm_MI2=(Alarm_MI2+11)%10;
+  lcd.print(Alarm_MI2);
+  lcd.setCursor(5,1);
+}
+else if(x==7)
+{
+  Alarm_S1=(Alarm_S1+7)%6;
+  lcd.print(Alarm_S1);
+  lcd.setCursor(7,1);
+}
+else if(x==8)
+{
+  Alarm_S2=(Alarm_S2+11)%10;
+  lcd.print(Alarm_S2);
+  lcd.setCursor(8,1);
+}</code></pre><p>  }<br>}</p>
+<p>void detime1(){  //<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>设置闹钟的时间减少函数<strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong><br>  if(y==1)<br>  {<br>    if(x==1)<br>    {<br>      if(Alarm_H1==0)<br>      {<br>        Alarm_H1=2;<br>      }<br>      else if(Alarm_H1!=0)<br>      {<br>        Alarm_H1–;<br>      }<br>      lcd.print(Alarm_H1);<br>      lcd.setCursor(1,1);<br>    }    </p>
+<pre><code>else if(x==2)
+{
+  if(Alarm_H2==0)
+  {
+    if(Alarm_H1==0||Alarm_H1==1)
+    {
+      Alarm_H2=9;
+    }
+    else if(H1 == 2)
+    {
+      Alarm_H2=3;
+    }
+  }
+  else if(Alarm_H2!=0)
+  {
+    Alarm_H2--;
+  }
+  lcd.print(Alarm_H2);
+  lcd.setCursor(2,1);
+}
+else if(x==4)
+{
+  if(Alarm_MI1==0)
+  {
+    Alarm_MI1=5;
+  }
+  else if(Alarm_MI1!=0)
+  {
+    Alarm_MI1--;
+  }
+  lcd.print(Alarm_MI1);
+  lcd.setCursor(4,1);
+}    
+else if(x==5)
+{
+  if(Alarm_MI2==0)
+  {
+    Alarm_MI2=9;
+  }
+  else if(Alarm_MI2!=0)
+  {
+    Alarm_MI2--;
+  }
+  lcd.print(Alarm_MI2);
+  lcd.setCursor(5,1);
+}    
+else if(x==7)
+{
+  if(Alarm_S1==0)
+  {
+    Alarm_S1=5;
+  }
+  else if(Alarm_S1!=0)
+  {
+    Alarm_S1--;
+  }
+  lcd.print(Alarm_S1);
+  lcd.setCursor(7,1);
+}    
+else if(x==8)
+{
+  if(Alarm_S2==0)
+  {
+    Alarm_S2=9;
+  }
+  else if(Alarm_S2!=0)
+  {
+    Alarm_S2--;
+  }
+  lcd.print(Alarm_S2);
+  lcd.setCursor(8,1);
+}</code></pre><p>  }<br>}</p>
+<p>int identify(int Y1,int Y2,int Y3,int Y4,int M1,int M2,int D1,int D2){<br>  int y;<br>  int w;<br>  int m;</p>
+<p>  if(M1==0&amp;&amp;M2==1)<br>  {<br>    m=13;<br>    y= (Y1 * 1000 + Y2 * 100 + Y3 * 10 + Y4)-1;<br>  }<br>  if(M1==0&amp;&amp;M2==2)<br>  {<br>    m=14;<br>    y= (Y1 * 1000 + Y2 * 100 + Y3 * 10 + Y4)-1;<br>  }<br>  if( (M1==1) || (M1==0&amp;&amp;M2!=1&amp;&amp;M2!=2) )<br>  {<br>    m=M1<em>10+M2;<br>    y= Y1 * 1000 + Y2 * 100 + Y3 * 10 + Y4;<br>  }<br>  int d= D1<em>10+D2;<br>  int c= y/100;<br>  if( (y&lt;=1582) || (y==1582 &amp;&amp; m&lt;=10) || (y==1582 &amp;&amp; m==10 &amp;&amp; d&lt;=4)  )<br>  {<br>    w=y + (y/4)  + (c/4)  -2</em>c +   (13</em>(m+1))/5   + d + 2 ;<br>  }<br>  else if( (y&gt;1582) || ( y==1582 &amp;&amp; m&gt;10) || ( y==1582 &amp;&amp; m==10 &amp;&amp; d&gt;4 ) )<br>  {<br>    w=(  (c/4)   -2<em>c + y +  (y/4)  +    ((13</em>(m+1))/5)  + d - 1  )% 7   ;<br>  }<br>  return (w);<br>  }  </p>
+<p>void setAlarm() {<br>  Alarm_H1 = H1;<br>  Alarm_H2 = H2;<br>  Alarm_MI1 = MI1;<br>  Alarm_MI2 = MI2;<br>  Alarm_S1 = S1;<br>  Alarm_S2 = S2;<br>}</p>
+<p>void AlarmInit()<br>{<br>  lcd.clear();<br>  lcd.setCursor(3, 0);<br>  lcd.print(“Set Alarm”);<br>  lcd.setCursor(1,1);<br>  lcd.print(Alarm_H1);<br>  lcd.print(Alarm_H2);<br>  lcd.print(“:”);<br>  lcd.print(Alarm_MI1);<br>  lcd.print(Alarm_MI2);<br>  lcd.print(“:”);<br>  lcd.print(Alarm_S1);<br>  lcd.print(Alarm_S2);<br>}</p>
+<p>int ISYEARP(int x)<br>{<br>  int p;<br>  if(((x%4)==0&amp;&amp;(x%100)!=0)||(x%400)==0)<br>  {<br>    p=1;<br>  }<br>  else<br>  {<br>    p=0;<br>  }<br>  return(p);<br>}</p>
+<h4 id="三-实验展示（视频-amp-amp-照片）"><a href="#三-实验展示（视频-amp-amp-照片）" class="headerlink" title="三.实验展示（视频&amp;&amp;照片）"></a>三.实验展示（视频&amp;&amp;照片）</h4><p>时间流动</p>
+<p>初始化时间及时间流动</p>
+<iframe src="//player.bilibili.com/player.html?aid=80653712&cid=138031213&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>修改时间</p>
+<iframe src="//player.bilibili.com/player.html?aid=80653793&cid=138031349&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>设置闹钟</p>
+<iframe src="//player.bilibili.com/player.html?aid=80653849&cid=138031471&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       
     </div>
     <footer class="article-footer">
@@ -204,7 +925,7 @@
       <ul>
         
           <li>
-            <a href="/2019/12/13/software/">Introduction To Sofware Engineering</a>
+            <a href="/2019/12/13/software/">software</a>
           </li>
         
           <li>
